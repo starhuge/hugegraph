@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+import com.baidu.hugegraph.StandardHugeGraph;
 import com.baidu.hugegraph.backend.BackendException;
 import com.baidu.hugegraph.backend.id.Id;
 import com.baidu.hugegraph.backend.query.Aggregate.AggregateFunc;
@@ -45,7 +46,7 @@ public class Query implements Cloneable {
     public static final long COMMIT_BATCH = 500;
 
     public static final long NO_CAPACITY = -1L;
-    public static final long DEFAULT_CAPACITY = 80000000L; // HugeGraph-777
+    public static long DEFAULT_CAPACITY = 800000L; // HugeGraph-777
 
     private static final ThreadLocal<Long> capacityContext = new ThreadLocal<>();
 
@@ -73,6 +74,7 @@ public class Query implements Cloneable {
 
     public Query(HugeType resultType) {
         this(resultType, null);
+        defaultCapacity(StandardHugeGraph.QUERY_CAPACITY);
     }
 
     public Query(HugeType resultType, Query originQuery) {
@@ -87,6 +89,8 @@ public class Query implements Cloneable {
         this.limit = NO_LIMIT;
         this.page = null;
 
+        Query.DEFAULT_CAPACITY = StandardHugeGraph.QUERY_CAPACITY;
+        defaultCapacity(StandardHugeGraph.QUERY_CAPACITY);
         this.capacity = defaultCapacity();
 
         this.showHidden = false;

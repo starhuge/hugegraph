@@ -134,6 +134,7 @@ public class StandardHugeGraph implements HugeGraph {
     );
 
     private static final Logger LOG = Log.logger(HugeGraph.class);
+    public  static long QUERY_CAPACITY = 800000L;
 
     private volatile boolean started;
     private volatile boolean closed;
@@ -171,6 +172,7 @@ public class StandardHugeGraph implements HugeGraph {
         this.graphEventHub = new EventHub("graph");
         this.indexEventHub = new EventHub("index");
 
+        StandardHugeGraph.QUERY_CAPACITY = config.get(CoreOptions.QUERY_DEFAULT_CAPACITY);
         final int writeLimit = config.get(CoreOptions.RATE_LIMIT_WRITE);
         this.writeRateLimiter = writeLimit > 0 ?
                                 RateLimiter.create(writeLimit) : null;
