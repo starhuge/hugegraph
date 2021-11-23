@@ -488,6 +488,15 @@ public class CoreOptions extends OptionHolder {
                     20000000
             );
 
+    public static final ConfigOption<Long> QUERY_DEFAULT_CAPACITY =
+            new ConfigOption<>(
+                    "query.default_capacity",
+                    "The maximum number of vertices in a query, " +
+                    "generally the largest vertex id is used as capacity.",
+                    rangeInt(1L, Integer.MAX_VALUE * 2L),
+                    800000L
+            );
+
     /**
      * The schema name rule:
      * 1、Not allowed end with spaces
