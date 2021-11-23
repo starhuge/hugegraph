@@ -389,7 +389,7 @@ public class CoreOptions extends OptionHolder {
                     "vertex.part_edge_commit_size",
                     "Whether to enable the mode to commit part of edges of " +
                     "vertex, enabled if commit size > 0, 0 meas disabled.",
-                    rangeInt(0, (int) Query.DEFAULT_CAPACITY),
+                    rangeInt(0, (int) 100000000),
                     5000
             );
 
@@ -440,7 +440,7 @@ public class CoreOptions extends OptionHolder {
             new ConfigOption<>(
                     "query.batch_size",
                     "The size of each batch when querying by batch.",
-                    rangeInt(1, (int) Query.DEFAULT_CAPACITY),
+                    rangeInt(1, (int) 100000000),
                     1000
             );
 
@@ -448,7 +448,7 @@ public class CoreOptions extends OptionHolder {
             new ConfigOption<>(
                     "query.page_size",
                     "The size of each page when querying by paging.",
-                    rangeInt(1, (int) Query.DEFAULT_CAPACITY),
+                    rangeInt(1, (int) 100000000),
                     500
             );
 
@@ -458,7 +458,7 @@ public class CoreOptions extends OptionHolder {
                     "The maximum number of intermediate results to " +
                     "intersect indexes when querying by multiple single " +
                     "index properties.",
-                    rangeInt(1, (int) Query.DEFAULT_CAPACITY),
+                    rangeInt(1, (int) 100000000),
                     1000
             );
 

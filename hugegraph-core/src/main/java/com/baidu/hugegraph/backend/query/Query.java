@@ -39,6 +39,8 @@ import com.baidu.hugegraph.util.InsertionOrderUtil;
 import com.baidu.hugegraph.util.collection.IdSet;
 import com.google.common.collect.ImmutableSet;
 
+import jline.internal.Log;
+
 public class Query implements Cloneable {
 
     public static final long NO_LIMIT = Long.MAX_VALUE;
