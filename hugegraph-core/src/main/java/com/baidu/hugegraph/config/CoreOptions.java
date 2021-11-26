@@ -494,7 +494,7 @@ public class CoreOptions extends OptionHolder {
                     "The maximum number of vertices in a query, " +
                     "generally the largest vertex id is used as capacity.",
                     rangeInt(1L, Integer.MAX_VALUE * 2L),
-                    800000L
+                    80000000L
             );
 
     /**

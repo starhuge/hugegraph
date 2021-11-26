@@ -39,8 +39,6 @@ import com.baidu.hugegraph.util.InsertionOrderUtil;
 import com.baidu.hugegraph.util.collection.IdSet;
 import com.google.common.collect.ImmutableSet;
 
-import jline.internal.Log;
-
 public class Query implements Cloneable {
 
     public static final long NO_LIMIT = Long.MAX_VALUE;
@@ -48,7 +46,7 @@ public class Query implements Cloneable {
     public static final long COMMIT_BATCH = 500;
 
     public static final long NO_CAPACITY = -1L;
-    public static long DEFAULT_CAPACITY = 800000L; // HugeGraph-777
+    public static long DEFAULT_CAPACITY = 80000000L; // HugeGraph-777
 
     private static final ThreadLocal<Long> capacityContext = new ThreadLocal<>();
 
@@ -76,7 +74,6 @@ public class Query implements Cloneable {
 
     public Query(HugeType resultType) {
         this(resultType, null);
-        defaultCapacity(StandardHugeGraph.QUERY_CAPACITY);
     }
 
     public Query(HugeType resultType, Query originQuery) {
