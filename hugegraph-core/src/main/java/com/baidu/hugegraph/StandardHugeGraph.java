@@ -907,6 +907,15 @@ public class StandardHugeGraph implements HugeGraph {
                      this.name);
     }
 
+    public void clearSchedulerAndLock() {
+        this.taskManager.forceRemoveScheduler(this.params);
+        try {
+            LockUtil.destroy(this.name);
+        } catch (Exception e) {
+            // Ignore
+        }
+    }
+
     @Override
     public HugeFeatures features() {
         return this.features;
